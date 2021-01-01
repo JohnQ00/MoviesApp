@@ -41,7 +41,7 @@ class MovieItem extends StatelessWidget {
                   style: searchItemStyle(Colors.black),
                 ),
                 Text(
-                  movieData(),
+                  this.movie.genre != null ? this.movie.genre : 'Unavailable',
                   style: searchItemStyle(Colors.black),
                 ),
                 Divider(
@@ -64,11 +64,5 @@ class MovieItem extends StatelessWidget {
       color: titleColor,
       fontWeight: FontWeight.bold,
     );
-  }
-
-  String movieData () {
-    if (this.movie.language != null) {
-      return this.movie.language;
-    } else { return "Unavailable";}
   }
 }

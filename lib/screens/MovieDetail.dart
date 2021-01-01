@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:omdb_app/screens/ShapePainter.dart';
 import 'package:omdb_app/services/MovieService.dart';
 import 'package:omdb_app/models/Movie.dart';
@@ -12,6 +13,7 @@ class MovieDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     return Scaffold(
       body: FutureBuilder<Movie>(
         future: getMovie(this.imdbID),
@@ -30,11 +32,11 @@ class MovieDetail extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 10.0, 0, 10.0),
+                    padding: EdgeInsets.fromLTRB(0, 5.0, 0, 5.0),
                     alignment: Alignment.center,
                     child: Image.network(
                       snapshot.data.poster,
-                      width: 200.0,
+                      width: 150.0,
                     ),
                   ),
                   Divider(
@@ -77,12 +79,15 @@ class MovieDetail extends StatelessWidget {
                     children: <Widget>[
                       Text(snapshot.data.plot, textAlign: TextAlign.justify, style: itemDetailStyle(Colors.black, 15.0),),
                       Divider(color: Colors.black, thickness: 1.0, height: 15.0,),
-                      Text('Genre: ' + snapshot.data.genre, textAlign: TextAlign.justify, style: itemDetailStyle(Colors.black, 15.0),),
-                      Divider(color: Colors.black, thickness: 1.0, height: 15.0, indent: 20.0, endIndent: 20.0,),
-                      Text('Year: ' + snapshot.data.year, textAlign: TextAlign.justify, style: itemDetailStyle(Colors.black, 15.0),),
+                      Text('Genre', textAlign: TextAlign.justify, style: itemDetailStyle(Colors.grey, 12.0),),
+                      Text(snapshot.data.genre, textAlign: TextAlign.justify, style: itemDetailStyle(Colors.black, 15.0),),
                       Divider(color: Colors.black, thickness: 1.0, height: 15.0,),
-                      Text('Language: ' + snapshot.data.language, textAlign: TextAlign.justify, style: itemDetailStyle(Colors.black, 15.0),),
-                      Divider(color: Colors.black, thickness: 5.0, height: 20.0,),
+                      Text('Year', textAlign: TextAlign.justify, style: itemDetailStyle(Colors.grey, 12.0),),
+                      Text(snapshot.data.year, textAlign: TextAlign.justify, style: itemDetailStyle(Colors.black, 15.0),),
+                      Divider(color: Colors.black, thickness: 1.0, height: 15.0,),
+                      Text('Language', textAlign: TextAlign.justify, style: itemDetailStyle(Colors.grey, 12.0),),
+                      Text(snapshot.data.language, textAlign: TextAlign.justify, style: itemDetailStyle(Colors.black, 15.0),),
+                      Divider(color: Colors.black, thickness: 5.0, height: 15.0,),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -90,18 +95,18 @@ class MovieDetail extends StatelessWidget {
                             flex: 1,
                             child: Container(
                               alignment: Alignment.center,
-                              height: 50.0,
-                              width: 25.0,
-                              child: Text(snapshot.data.imdbRating + '/10', textAlign: TextAlign.justify, style: itemDetailStyle(Colors.white, 25.0),),
+                              height: 45.0,
+                              width: 20.0,
+                              child: Text('IMDB: ' + snapshot.data.imdbRating + '/10', textAlign: TextAlign.justify, style: itemDetailStyle(Colors.white, 20.0),),
                             ),
                           ),
                           Expanded(
                             flex: 1,
                             child: Container(
                               alignment: Alignment.center,
-                              height: 50.0,
-                              width: 25.0,
-                              child: Text(snapshot.data.metaScore + '/100', textAlign: TextAlign.justify, style: itemDetailStyle(Colors.white, 25.0),),
+                              height: 45.0,
+                              width: 20.0,
+                              child: Text('MetaCritic: ' + snapshot.data.metaScore + '/100', textAlign: TextAlign.justify, style: itemDetailStyle(Colors.white, 20.0),),
                             ),
                           ),
                         ],

@@ -12,7 +12,7 @@ class App extends StatefulWidget {
 }
 
 class MyApp extends State<App> {
-
+  
   final searchTextController = new TextEditingController();
   String searchText = "";
 
@@ -41,6 +41,7 @@ class MyApp extends State<App> {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     return GestureDetector(
       onTap: (){
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -64,7 +65,7 @@ class MyApp extends State<App> {
                 ),
                 Container(
                   height: double.infinity,
-                  padding: EdgeInsets.symmetric(vertical: 100.0, horizontal: 50.0),
+                  padding: EdgeInsets.symmetric(vertical: 90.0, horizontal: 50.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
@@ -186,7 +187,10 @@ class MyApp extends State<App> {
                                   ),
                                 );
                               }
-                              return LinearProgressIndicator();
+                              return Container(
+                                padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 0.0),
+                                child: LinearProgressIndicator(),
+                              );
                             }),
                     ],
                   ),
