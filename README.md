@@ -1,4 +1,4 @@
-# omdb_app
+# Movie's App
 
 A test of my skills on Flutter.
 
