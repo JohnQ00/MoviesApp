@@ -90,6 +90,7 @@ class MyApp extends State<App> {
                       RotationTransition(
                         child: Image(
                           image: AssetImage('assets/images/movie.png'),
+                          semanticLabel: 'Film roll, the logo of the app.',
                         ),
                         turns: new AlwaysStoppedAnimation(315/360),
                       ),
@@ -180,6 +181,7 @@ class MyApp extends State<App> {
                                   padding: EdgeInsets.all(10.0),
                                   child: Text(
                                     "Movie not found!",
+                                    semanticsLabel: 'Movie not found, type it again.',
                                     style: TextStyle(
                                       fontFamily: 'Josefin',
                                       fontWeight: FontWeight.bold,

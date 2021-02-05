@@ -8,6 +8,7 @@ import 'package:omdb_app/models/Movie.dart';
 class MovieDetail extends StatelessWidget {
   final String movieTitle;
   final String imdbID;
+  bool showButton = false;
 
   MovieDetail({this.movieTitle, this.imdbID});
 
@@ -15,10 +16,21 @@ class MovieDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        mini: true,
+        tooltip: 'Back button',
+        backgroundColor: Colors.lightGreen,
+        focusColor: Colors.lightGreenAccent,
+        hoverColor: Colors.lightGreenAccent,
+        child: Icon(Icons.arrow_back),
+        onPressed: () => Navigator.pop(context),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
       body: FutureBuilder<Movie>(
         future: getMovie(this.imdbID),
         builder: (context, snapshot) {
           if (snapshot.hasData){
+            showButton = true;
             return Container(
               padding: EdgeInsets.all(20.0),
               decoration: BoxDecoration(
@@ -37,6 +49,7 @@ class MovieDetail extends StatelessWidget {
                     child: Image.network(
                       snapshot.data.poster,
                       width: 150.0,
+                      semanticLabel: 'Poster from movie: ' + this.movieTitle + '.',
                     ),
                   ),
                   Divider(
