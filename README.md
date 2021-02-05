@@ -14,3 +14,14 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+floatingActionButton: FloatingActionButton(
+        mini: true,
+        tooltip: 'Back button',
+        backgroundColor: Colors.lightGreen,
+        focusColor: Colors.lightGreenAccent,
+        hoverColor: Colors.lightGreenAccent,
+        child: Icon(Icons.arrow_back),
+        onPressed: () => Navigator.pop(context),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,

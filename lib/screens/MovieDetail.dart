@@ -46,11 +46,23 @@ class MovieDetail extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.fromLTRB(0, 5.0, 0, 5.0),
                     alignment: Alignment.center,
-                    child: Image.network(
-                      snapshot.data.poster,
-                      width: 150.0,
-                      semanticLabel: 'Poster from movie: ' + this.movieTitle + '.',
-                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Expanded(
+                          flex: 25,
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 0),
+                            child: Image.network(
+                              snapshot.data.poster,
+                              width: 150.0,
+                              height: 200.0,
+                              semanticLabel: 'Poster from the movie: ' + this.movieTitle + '.',
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
                   ),
                   Divider(
                     color: Colors.black,
